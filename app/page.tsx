@@ -3,6 +3,7 @@ import getDomain from "@/app/lib/getDomain";
 async function getData(): Promise<any> {
   const domain: string = getDomain();
   const endpoint: string = `${domain}/api`;
+  console.log(endpoint);
 
   try {
     const response = await fetch(endpoint, { cache: "no-store" });

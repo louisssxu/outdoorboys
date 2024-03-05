@@ -6,7 +6,7 @@ async function fetchData(): Promise<any> {
 
   const response: Response = await fetch(endpoint, { cache: "no-store" });
   if (!response.ok) {
-    throw new Error("faile to fetch data");
+    throw new Error("failed to fetch data");
   }
   if (response.headers.get("content-type") !== "application/json") {
     return {};
@@ -16,6 +16,8 @@ async function fetchData(): Promise<any> {
 }
 
 export default async function Home() {
-  const data = await fetchData();
+  // const data = await fetchData();
+  const data = process.env.NEXT_PUBLIC_VERCEL_URL;
+
   return <div>Home Page test 3 {data && JSON.stringify(data)}</div>;
 }

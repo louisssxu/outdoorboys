@@ -5,11 +5,13 @@ async function fetchData(): Promise<any> {
   const endpoint: string = `${domain}/api`;
 
   const response: Response = await fetch(endpoint, { cache: "no-store" });
+  if (!response.ok) {
+    throw new Error("faile to fetch data");
+  }
+  if (response.headers.get("content-type") !== "application/json") {
+    return {};
+  }
   const data: any = response.json();
-  console.log(data);
-  const jsonData: string = JSON.stringify(data);
-  console.log(jsonData);
-  console.log(response.status);
   return data;
 }
 

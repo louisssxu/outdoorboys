@@ -29,12 +29,17 @@ async function getData(): Promise<any> {
 }
 
 export default async function Home() {
-  try {
-    const data = await getData();
-    return <div>Home Page test 3 {JSON.stringify(data)}</div>;
-  } catch (error) {
-    console.error("Error in Home function:", error);
-    // Handle the error appropriately in your UI
-    return <div>Error loading data...</div>;
-  }
+  const data = await getData();
+  return (
+    <>
+      <div>
+        <h1>
+          {process.env.NEXT_PUBLIC_VERCEL_ENV === "development"
+            ? "DEVELOPMENT ENVIRONMENT"
+            : "DEPLOYMENT ENVIROMENT"}
+        </h1>
+      </div>
+      <div>Home Page test 3 {JSON.stringify(data)}</div>
+    </>
+  );
 }

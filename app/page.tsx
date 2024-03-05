@@ -1,11 +1,13 @@
-import Image from "next/image";
+import getDomain from "@/app/lib/getDomain";
 
-async function fetchData() {
-  const url = `http://${process.env.NEXT_PUBLIC_VERCEL_URL}/api`;
-  const response = await fetch(url, { cache: "no-store" });
-  const data = response.json();
+async function fetchData(): Promise<any> {
+  const domain: string = getDomain();
+  const endpoint: string = `${domain}/api`;
+
+  const response: Response = await fetch(endpoint, { cache: "no-store" });
+  const data: any = response.json();
   console.log(data);
-  const jsonData = JSON.stringify(data);
+  const jsonData: string = JSON.stringify(data);
   console.log(jsonData);
   console.log(response.status);
   return data;

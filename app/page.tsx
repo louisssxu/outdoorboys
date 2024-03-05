@@ -1,10 +1,11 @@
 import getDomain from "@/app/lib/getDomain";
 
-async function fetchData(): Promise<any> {
+async function getData(): Promise<any> {
   const domain: string = getDomain();
   const endpoint: string = `${domain}/api`;
 
   const response: Response = await fetch(endpoint, { cache: "no-store" });
+
   if (!response.ok) {
     throw new Error("failed to fetch data");
   }
@@ -16,8 +17,7 @@ async function fetchData(): Promise<any> {
 }
 
 export default async function Home() {
-  // const data = await fetchData();
-  const data = process.env.NEXT_PUBLIC_VERCEL_URL;
+  const data = await getData();
 
   return <div>Home Page test 3 {data && JSON.stringify(data)}</div>;
 }

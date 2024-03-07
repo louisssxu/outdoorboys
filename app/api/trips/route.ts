@@ -1,7 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getTrips } from "@/app/lib/db";
+import { getTrips, Trip } from "@/app/lib/db";
 
 export async function GET(request: NextRequest) {
-  const data = await getTrips();
-  return NextResponse.json(data, { status: 200 });
+  const trips: Trip[] = await getTrips();
+  if (!trips) {
+    return NextResponse.json({ message: "No trips found" }, { status: 404 });
+  }
+  return NextResponse.json({ trips: trips }, { status: 200 });
 }

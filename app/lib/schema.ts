@@ -5,6 +5,7 @@ import {
   date,
   integer,
   primaryKey,
+  varchar,
 } from "drizzle-orm/pg-core";
 
 export const trips = pgTable("trips", {
@@ -22,13 +23,13 @@ export const equiments = pgTable("equipments", {
 });
 
 export const foods = pgTable("foods", {
-  foodId: serial("food_id").primaryKey(),
-  name: text("name").notNull(),
+  foodName: varchar("food_name", { length: 100 }).primaryKey(),
+  description: text("description").notNull(),
+  imageUrl: text("image_url").notNull(),
 });
 
 export const ingredients = pgTable("ingredients", {
-  ingredientId: serial("ingredient_id").primaryKey(),
-  name: text("name").notNull(),
+  ingName: varchar("ingredient_name", { length: 100 }).primaryKey(),
   affiliateUrl: text("affiliate_url").notNull(),
 });
 
@@ -55,13 +56,13 @@ export const trip_food = pgTable(
     tripId: integer("trip_id")
       .notNull()
       .references(() => trips.tripId),
-    foodId: integer("food_id")
+    foodName: varchar("food_name", { length: 100 })
       .notNull()
-      .references(() => foods.foodId),
+      .references(() => foods.foodName),
   },
   (table) => {
     return {
-      pk: primaryKey({ columns: [table.tripId, table.foodId] }),
+      pk: primaryKey({ columns: [table.tripId, table.foodName] }),
     };
   }
 );
@@ -69,16 +70,16 @@ export const trip_food = pgTable(
 export const food_ingredient = pgTable(
   "food_ingredient",
   {
-    foodId: integer("food_id")
+    foodName: varchar("food_name", { length: 100 })
       .notNull()
-      .references(() => foods.foodId),
-    ingredientId: integer("ingredient_id")
+      .references(() => foods.foodName),
+    ingName: varchar("ingredient_name", { length: 100 })
       .notNull()
-      .references(() => ingredients.ingredientId),
+      .references(() => ingredients.ingName),
   },
   (table) => {
     return {
-      pk: primaryKey({ columns: [table.ingredientId, table.foodId] }),
+      pk: primaryKey({ columns: [table.ingName, table.foodName] }),
     };
   }
 );

@@ -1,0 +1,304 @@
+{
+  "id": "133fab6d-87c2-4102-ab1b-2a39800c044a",
+  "prevId": "11db4fb8-06a7-45f0-81b6-17d20b0b9333",
+  "version": "5",
+  "dialect": "pg",
+  "tables": {
+    "equipments": {
+      "name": "equipments",
+      "schema": "",
+      "columns": {
+        "equipment_id": {
+          "name": "equipment_id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "affiliate_url": {
+          "name": "affiliate_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "category": {
+          "name": "category",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "food_ingredient": {
+      "name": "food_ingredient",
+      "schema": "",
+      "columns": {
+        "food_name": {
+          "name": "food_name",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ingredient_name": {
+          "name": "ingredient_name",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "food_ingredient_food_name_foods_food_name_fk": {
+          "name": "food_ingredient_food_name_foods_food_name_fk",
+          "tableFrom": "food_ingredient",
+          "tableTo": "foods",
+          "columnsFrom": [
+            "food_name"
+          ],
+          "columnsTo": [
+            "food_name"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "food_ingredient_ingredient_name_ingredients_ingredient_name_fk": {
+          "name": "food_ingredient_ingredient_name_ingredients_ingredient_name_fk",
+          "tableFrom": "food_ingredient",
+          "tableTo": "ingredients",
+          "columnsFrom": [
+            "ingredient_name"
+          ],
+          "columnsTo": [
+            "ingredient_name"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "food_ingredient_ingredient_name_food_name_pk": {
+          "name": "food_ingredient_ingredient_name_food_name_pk",
+          "columns": [
+            "ingredient_name",
+            "food_name"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "foods": {
+      "name": "foods",
+      "schema": "",
+      "columns": {
+        "food_name": {
+          "name": "food_name",
+          "type": "varchar(100)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "image_url": {
+          "name": "image_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "ingredients": {
+      "name": "ingredients",
+      "schema": "",
+      "columns": {
+        "ingredient_name": {
+          "name": "ingredient_name",
+          "type": "varchar(100)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "affiliate_url": {
+          "name": "affiliate_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "trip_equipment": {
+      "name": "trip_equipment",
+      "schema": "",
+      "columns": {
+        "trip_id": {
+          "name": "trip_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "equipment_id": {
+          "name": "equipment_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "trip_equipment_trip_id_trips_trip_id_fk": {
+          "name": "trip_equipment_trip_id_trips_trip_id_fk",
+          "tableFrom": "trip_equipment",
+          "tableTo": "trips",
+          "columnsFrom": [
+            "trip_id"
+          ],
+          "columnsTo": [
+            "trip_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "trip_equipment_equipment_id_equipments_equipment_id_fk": {
+          "name": "trip_equipment_equipment_id_equipments_equipment_id_fk",
+          "tableFrom": "trip_equipment",
+          "tableTo": "equipments",
+          "columnsFrom": [
+            "equipment_id"
+          ],
+          "columnsTo": [
+            "equipment_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "trip_equipment_trip_id_equipment_id_pk": {
+          "name": "trip_equipment_trip_id_equipment_id_pk",
+          "columns": [
+            "trip_id",
+            "equipment_id"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "trip_food": {
+      "name": "trip_food",
+      "schema": "",
+      "columns": {
+        "trip_id": {
+          "name": "trip_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "food_name": {
+          "name": "food_name",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "trip_food_trip_id_trips_trip_id_fk": {
+          "name": "trip_food_trip_id_trips_trip_id_fk",
+          "tableFrom": "trip_food",
+          "tableTo": "trips",
+          "columnsFrom": [
+            "trip_id"
+          ],
+          "columnsTo": [
+            "trip_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "trip_food_food_name_foods_food_name_fk": {
+          "name": "trip_food_food_name_foods_food_name_fk",
+          "tableFrom": "trip_food",
+          "tableTo": "foods",
+          "columnsFrom": [
+            "food_name"
+          ],
+          "columnsTo": [
+            "food_name"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "trip_food_trip_id_food_name_pk": {
+          "name": "trip_food_trip_id_food_name_pk",
+          "columns": [
+            "trip_id",
+            "food_name"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "trips": {
+      "name": "trips",
+      "schema": "",
+      "columns": {
+        "trip_id": {
+          "name": "trip_id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "location": {
+          "name": "location",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "date": {
+          "name": "date",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "youtube_url": {
+          "name": "youtube_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

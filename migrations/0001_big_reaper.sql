@@ -6,19 +6,19 @@ CREATE TABLE IF NOT EXISTS "equipments" (
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "food_ingredient" (
-	"food_id" integer NOT NULL,
-	"ingredient_id" integer NOT NULL,
-	CONSTRAINT "food_ingredient_ingredient_id_food_id_pk" PRIMARY KEY("ingredient_id","food_id")
+	"food_name" varchar(100) NOT NULL,
+	"ingredient_name" varchar(100) NOT NULL,
+	CONSTRAINT "food_ingredient_ingredient_name_food_name_pk" PRIMARY KEY("ingredient_name","food_name")
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "foods" (
-	"food_id" serial PRIMARY KEY NOT NULL,
-	"name" text NOT NULL
+	"food_name" varchar(100) PRIMARY KEY NOT NULL,
+	"description" text NOT NULL,
+	"image_url" text NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "ingredients" (
-	"ingredient_id" serial PRIMARY KEY NOT NULL,
-	"name" text NOT NULL,
+	"ingredient_name" varchar(100) PRIMARY KEY NOT NULL,
 	"affiliate_url" text NOT NULL
 );
 --> statement-breakpoint
@@ -30,25 +30,18 @@ CREATE TABLE IF NOT EXISTS "trip_equipment" (
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "trip_food" (
 	"trip_id" integer NOT NULL,
-	"food_id" integer NOT NULL,
-	CONSTRAINT "trip_food_trip_id_food_id_pk" PRIMARY KEY("trip_id","food_id")
-);
---> statement-breakpoint
-CREATE TABLE IF NOT EXISTS "trips" (
-	"trip_id" serial PRIMARY KEY NOT NULL,
-	"location" text NOT NULL,
-	"youtube_url" text NOT NULL,
-	"date" date NOT NULL
+	"food_name" varchar(100) NOT NULL,
+	CONSTRAINT "trip_food_trip_id_food_name_pk" PRIMARY KEY("trip_id","food_name")
 );
 --> statement-breakpoint
 DO $$ BEGIN
- ALTER TABLE "food_ingredient" ADD CONSTRAINT "food_ingredient_food_id_foods_food_id_fk" FOREIGN KEY ("food_id") REFERENCES "foods"("food_id") ON DELETE no action ON UPDATE no action;
+ ALTER TABLE "food_ingredient" ADD CONSTRAINT "food_ingredient_food_name_foods_food_name_fk" FOREIGN KEY ("food_name") REFERENCES "foods"("food_name") ON DELETE no action ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
 --> statement-breakpoint
 DO $$ BEGIN
- ALTER TABLE "food_ingredient" ADD CONSTRAINT "food_ingredient_ingredient_id_ingredients_ingredient_id_fk" FOREIGN KEY ("ingredient_id") REFERENCES "ingredients"("ingredient_id") ON DELETE no action ON UPDATE no action;
+ ALTER TABLE "food_ingredient" ADD CONSTRAINT "food_ingredient_ingredient_name_ingredients_ingredient_name_fk" FOREIGN KEY ("ingredient_name") REFERENCES "ingredients"("ingredient_name") ON DELETE no action ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
@@ -72,7 +65,7 @@ EXCEPTION
 END $$;
 --> statement-breakpoint
 DO $$ BEGIN
- ALTER TABLE "trip_food" ADD CONSTRAINT "trip_food_food_id_foods_food_id_fk" FOREIGN KEY ("food_id") REFERENCES "foods"("food_id") ON DELETE no action ON UPDATE no action;
+ ALTER TABLE "trip_food" ADD CONSTRAINT "trip_food_food_name_foods_food_name_fk" FOREIGN KEY ("food_name") REFERENCES "foods"("food_name") ON DELETE no action ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;

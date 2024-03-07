@@ -1,6 +1,6 @@
-import getDomain from "@/app/lib/getDomain";
+import getDomain from "@/lib/getDomain";
 import { json } from "stream/consumers";
-import { Trip } from "./lib/db";
+import { Trip } from "../lib/db";
 import { Key } from "react";
 
 async function getData(): Promise<any> {

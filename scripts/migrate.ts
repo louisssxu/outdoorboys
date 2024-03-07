@@ -1,5 +1,5 @@
 import { migrate } from "drizzle-orm/neon-http/migrator";
-import { db } from "@/app/lib/db";
+import { db } from "@/lib/db";
 
 (async function main() {
   try {

@@ -26,7 +26,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "app/scripts/migrate.ts"
+    "scripts/migrate.ts"
   ],
   "exclude": ["node_modules"]
 }

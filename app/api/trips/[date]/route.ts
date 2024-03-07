@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getTripByDate, Trip } from "@/app/lib/db";
+import { getTripByDate, Trip } from "@/lib/db";
 
 export async function GET(
   request: NextRequest,

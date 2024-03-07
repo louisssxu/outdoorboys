@@ -67,7 +67,12 @@ export async function getEquipments() {
 
 export async function getEquipmentsByTripDate(date: string) {
   const data = await db
-    .select(schema.equiments) // not sure why error, but it works
+    .select({
+      equipmentId: schema.equiments.equipmentId,
+      name: schema.equiments.name,
+      affiliteUrl: schema.equiments.affiliateUrl,
+      category: schema.equiments.category,
+    })
     .from(schema.trips)
     .where(eq(schema.trips.date, date))
     .innerJoin(
@@ -102,7 +107,11 @@ export async function getFoods() {
 
 export async function getFoodByTripDate(date: string) {
   const data = await db
-    .select(schema.foods) // not sure why error, but it works
+    .select({
+      foodName: schema.foods.foodName,
+      description: schema.foods.description,
+      imageUrl: schema.foods.imageUrl,
+    })
     .from(schema.trips)
     .where(eq(schema.trips.date, date))
     .innerJoin(

@@ -1,8 +1,9 @@
 import getDomain from "@/app/lib/getDomain";
+import { json } from "stream/consumers";
 
 async function getData(): Promise<any> {
   const domain: string = getDomain();
-  const endpoint: string = `${domain}/api`;
+  const endpoint: string = `${domain}/api/trips`;
   console.log(endpoint);
 
   try {
@@ -29,7 +30,9 @@ async function getData(): Promise<any> {
 }
 
 export default async function Home() {
-  const data = await getData();
+  const trips = await getData();
+  console.log(trips);
+  console.log(typeof trips);
   return (
     <>
       <div>
@@ -39,7 +42,7 @@ export default async function Home() {
             : "DEPLOYMENT ENVIROMENT"}
         </h1>
       </div>
-      <div>Home Page test 3 {JSON.stringify(data)}</div>
+      <div>{JSON.stringify(trips)}</div>
     </>
   );
 }

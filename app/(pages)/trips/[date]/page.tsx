@@ -9,6 +9,7 @@ export default async function TripPage({
   params: { date: string };
 }) {
   // const data = await fetch(`/api/trips/${params.date}`);
+
   console.log(params.date);
   const data = await fetch(`${getDomain()}/api/trips/${params.date}`, {
     cache: "no-store",

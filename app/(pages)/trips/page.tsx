@@ -1,17 +1,20 @@
-"use client";
 import { Trip } from "../../_lib/db";
 import { Key } from "react";
-import useSWR from "swr";
+import getDomain from "@/app/_lib/getDomain";
 
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
+// const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-export default function TripsPage() {
-  const { data, error, isLoading } = useSWR("api/trips", fetcher);
+export default async function TripsPage() {
+  // const { data, error, isLoading } = useSWR("api/trips", fetcher);
+  const data = await fetch(`${getDomain()}/api/trips`, {
+    cache: "no-store",
+  });
+  const jsonData = await data.json();
   return (
     <>
       <h1>Lukes Trips</h1>
-      {data &&
-        data.trips.map((trip: Trip, index: Key) => (
+      {jsonData &&
+        jsonData.trips.map((trip: Trip, index: Key) => (
           <div key={index}>{JSON.stringify(trip)}</div>
         ))}
     </>

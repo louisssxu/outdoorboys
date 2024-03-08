@@ -3,11 +3,9 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import NavBar from "./_components/navbar";
 
-const inter = Inter({ subsets: ["latin"] });
-
 export const metadata: Metadata = {
   title: "Outdoorboys Gear",
-  description: "See what Luke packed on his lates trip!",
+  description: "See what Luke packed on his latest trip!",
 };
 
 export default function RootLayout({
@@ -17,9 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="">
+      <body>
         <NavBar />
-        <div className=" h-screen px-20 ">{children}</div>
+        <div className=" container mx-auto px-4 h-max">{children}</div>
       </body>
     </html>
   );

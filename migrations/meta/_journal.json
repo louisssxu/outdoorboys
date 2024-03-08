@@ -15,6 +15,13 @@
       "when": 1709828490264,
       "tag": "0001_big_reaper",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1709934437385,
+      "tag": "0002_tranquil_lester",
+      "breakpoints": true
     }
   ]
 }

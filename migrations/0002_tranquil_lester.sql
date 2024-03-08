@@ -1,0 +1,1 @@
+ALTER TABLE "trips" ADD COLUMN "title" text NOT NULL;

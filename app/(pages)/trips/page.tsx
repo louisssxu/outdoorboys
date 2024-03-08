@@ -1,7 +1,7 @@
 import { Trip } from "../../_lib/db";
 import { Key } from "react";
 import getDomain from "@/app/_lib/getDomain";
-import TripBox from "@/app/_components/tripbox";
+import TripCard from "@/app/_components/tripbox";
 
 // const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -13,12 +13,11 @@ export default async function TripsPage() {
   const jsonData = await data.json();
   return (
     <>
-      <h1>Lukes Trips</h1>
-      <div className=" size-full flex flex-wrap outline-dotted -mx-4 ">
+      <h1 className="text-4xl font-bold m-2 mb-12">Lukes Trips</h1>
+      <div className=" size-full flex flex-wrap -mx-4 ">
         {jsonData &&
           jsonData.trips.map((trip: Trip, index: Key) => (
-            // <div key={index}>{JSON.stringify(trip)}</div>
-            <TripBox key={index} {...trip} />
+            <TripCard key={index} {...trip} />
           ))}
       </div>
     </>

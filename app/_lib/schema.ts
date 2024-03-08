@@ -10,6 +10,7 @@ import {
 
 export const trips = pgTable("trips", {
   tripId: serial("trip_id").primaryKey(),
+  title: text("title").notNull(),
   location: text("location").notNull(),
   date: date("date").notNull(),
   youtubeUrl: text("youtube_url").notNull(),

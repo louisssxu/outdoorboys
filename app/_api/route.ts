@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { dbTest } from "@/lib/db";
+import { dbTest } from "@/app/_lib/db";
 
 export async function GET(request: NextRequest) {
   const data = await dbTest();

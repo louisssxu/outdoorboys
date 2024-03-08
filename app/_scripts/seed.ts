@@ -14,7 +14,7 @@ import {
   insertTripEquipment,
   insertTripFood,
   clearTables,
-} from "@/lib/db";
+} from "@/app/_lib/db";
 import { get } from "http";
 
 (async function main() {

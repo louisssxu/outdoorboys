@@ -1,7 +1,12 @@
-import { Equipment } from "@/app/_lib/db";
+import { Equipment, Food, Trip } from "@/app/_lib/db";
 import getDomain from "@/app/_lib/getDomain";
 import { eq } from "drizzle-orm";
 import { Key } from "react";
+import getImageUrl from "@/app/_lib/getImageUrl";
+import Link from "next/link";
+import VideoHeader from "@/app/_components/videoheader";
+import FoodRow from "@/app/_components/foodrow";
+import EquipmentRow from "@/app/_components/equipmentrow";
 
 export default async function TripPage({
   params,
@@ -15,22 +20,34 @@ export default async function TripPage({
     cache: "no-store",
   });
   const jsonData = await data.json();
+  const trip: Trip = jsonData.trip;
+  const equipments: Equipment[] = jsonData.equipments;
+  const foods: Food[] = jsonData.foods;
 
   return (
     <>
-      <div>Trip page</div>
-      <h2>Trip:</h2>
-      <div>{JSON.stringify(jsonData.trip)}</div>
-      <h2>Equipments:</h2>
-      {jsonData.equipments &&
-        jsonData.equipments.map((equipment: Equipment, index: Key) => (
-          <div key={index}>{JSON.stringify(equipment)}</div>
-        ))}
-      <h2>Foods:</h2>
-      {jsonData.foods &&
-        jsonData.foods.map((food: any, index: Key) => (
-          <div key={index}>{JSON.stringify(food)}</div>
-        ))}
+      <h1 className="text-3xl font-bold my-6">What Luke Packed This Trip</h1>
+      <p className="mb-6">
+        This is a list of gears we see Luke use this video. We provide a link to
+        buy the gear if you want to support us.
+      </p>
+      <VideoHeader trip={trip} />
+      <div className="mb-8">
+        <h2 className="font-semibold mb-4">Food</h2>
+        <div className="space-y-4">
+          {foods.map((food: Food) => (
+            <FoodRow food={food}></FoodRow>
+          ))}
+        </div>
+      </div>
+      <div className="mb-8">
+        <h2 className="font-semibold mb-4">Equipment</h2>
+        <div className="space-y-4">
+          {equipments.map((equipment: Equipment) => (
+            <EquipmentRow equipment={equipment}></EquipmentRow>
+          ))}
+        </div>
+      </div>
     </>
   );
 }

@@ -1,9 +1,6 @@
 import { Equipment, Food, Trip } from "@/app/_lib/db";
 import getDomain from "@/app/_lib/getDomain";
-import { eq } from "drizzle-orm";
 import { Key } from "react";
-import getImageUrl from "@/app/_lib/getImageUrl";
-import Link from "next/link";
 import VideoHeader from "@/app/_components/videoheader";
 import FoodRow from "@/app/_components/foodrow";
 import EquipmentRow from "@/app/_components/equipmentrow";
@@ -35,16 +32,16 @@ export default async function TripPage({
       <div className="mb-8">
         <h2 className="font-semibold mb-4">Food</h2>
         <div className="space-y-4">
-          {foods.map((food: Food) => (
-            <FoodRow food={food}></FoodRow>
+          {foods.map((food: Food, key: Key) => (
+            <FoodRow key={key} food={food}></FoodRow>
           ))}
         </div>
       </div>
       <div className="mb-8">
         <h2 className="font-semibold mb-4">Equipment</h2>
         <div className="space-y-4">
-          {equipments.map((equipment: Equipment) => (
-            <EquipmentRow equipment={equipment}></EquipmentRow>
+          {equipments.map((equipment: Equipment, key: Key) => (
+            <EquipmentRow key={key} equipment={equipment}></EquipmentRow>
           ))}
         </div>
       </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { Equipment, Food } from "@/app/_lib/db";
+import { Food } from "@/app/_lib/db";
 
 export default function FoodRow({ food }: { food: Food }) {
   return (

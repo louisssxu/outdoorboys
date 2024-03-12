@@ -25,6 +25,10 @@ export async function insertTrip(trip: Trip) {
   return db.insert(schema.trips).values(trip).returning();
 }
 
+export async function removeTrip(tripId: number) {
+  return db.delete(schema.trips).where(eq(schema.trips.tripId, tripId));
+}
+
 export async function getTripById(tripId: number) {
   const data = await db
     .select()

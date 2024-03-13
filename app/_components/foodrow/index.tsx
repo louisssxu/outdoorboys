@@ -1,8 +1,8 @@
 "use client";
 
-import { Food } from "@/app/_lib/db";
+import { Food } from "@/app/_lib/interface";
 
-export default function FoodRow({ food }: { food: Food }) {
+export default function FoodRow(food: Food) {
   return (
     <div className="flex items-center">
       <img
@@ -11,7 +11,7 @@ export default function FoodRow({ food }: { food: Food }) {
         alt="Laptop"
       />
       <span className="flex flex-grow">
-        <span>{food.foodName}</span>
+        <span>{food.name}</span>
         {/* generic */}
         <span className="mx-1">| {food.description}</span>
       </span>

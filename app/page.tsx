@@ -1,11 +1,7 @@
 export default async function Home() {
   return (
     <>
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
-      <div>Home Page</div>
+      <div>Out door boys main page</div>
     </>
   );
 }

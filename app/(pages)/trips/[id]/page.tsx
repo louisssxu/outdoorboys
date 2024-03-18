@@ -3,14 +3,15 @@ import { Key } from "react";
 import VideoHeader from "@/app/_components/videoheader";
 import FoodRow from "@/app/_components/foodrow";
 import EquipmentRow from "@/app/_components/equipmentrow";
-import axios from "axios";
 import { Trip, Equipment, Food } from "@/app/_lib/interface";
 
 export default async function TripPage({ params }: { params: { id: string } }) {
-  const res = await axios.get(`${getDomain()}/api/trips/${params.id}`);
-  // console.log(`${getDomain()}/api/trips/${params.id}`);
+  const res = await fetch(`${getDomain()}/api/trips/${params.id}`);
+  const jsonData = await res.json();
 
-  const trip: Trip = res.data;
+  console.log(`${getDomain()}/api/trips/${params.id}`);
+
+  const trip: Trip = jsonData;
   const equipments: (number | Equipment)[] = trip.equipments;
   const foods: (number | Food)[] = trip.foods;
 

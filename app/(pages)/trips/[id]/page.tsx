@@ -6,14 +6,17 @@ import EquipmentRow from "@/app/_components/equipmentrow";
 import { Trip, Equipment, Food } from "@/app/_lib/interface";
 
 export default async function TripPage({ params }: { params: { id: string } }) {
-  const res = await fetch(`${getDomain()}/api/trips/${params.id}`);
+  const res = await fetch(`${getDomain()}/api/trips/${params.id}`, {
+    cache: "no-store",
+  });
   const jsonData = await res.json();
 
   console.log(`${getDomain()}/api/trips/${params.id}`);
 
   const trip: Trip = jsonData;
-  const equipments: (number | Equipment)[] = trip.equipments;
-  const foods: (number | Food)[] = trip.foods;
+  // const equipments: (number | Equipment)[] = trip.equipments;
+  const equipments: Equipment[] = trip.equipments;
+  const foods: Food[] = trip.foods;
 
   return (
     <>
@@ -23,22 +26,22 @@ export default async function TripPage({ params }: { params: { id: string } }) {
         buy the gear if you want to support us.
       </p>
       <VideoHeader {...trip} />
-      {/* <div className="mb-8">
+      <div className="mb-8">
         <h2 className="font-semibold mb-4">Food</h2>
         <div className="space-y-4">
           {foods.map((food: Food, key: Key) => (
-            <FoodRow key={key} food={food}></FoodRow>
+            <FoodRow key={key} {...food}></FoodRow>
           ))}
         </div>
-      </div> */}
-      {/* <div className="mb-8">
+      </div>
+      <div className="mb-8">
         <h2 className="font-semibold mb-4">Equipment</h2>
         <div className="space-y-4">
           {equipments.map((equipment: Equipment, key: Key) => (
-            <EquipmentRow key={key} equipment={equipment}></EquipmentRow>
+            <EquipmentRow key={key} {...equipment}></EquipmentRow>
           ))}
         </div>
-      </div> */}
+      </div>
     </>
   );
 }

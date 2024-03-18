@@ -46,8 +46,8 @@ export interface Trip {
   location: string;
   date: string;
   youtubeUrl: string;
-  equipments: (number | Equipment)[];
-  foods: (number | Food)[];
+  equipments: Equipment[];
+  foods: Food[];
   updatedAt: string;
   createdAt: string;
 }
@@ -61,7 +61,7 @@ export interface Equipment {
   description?: string | null;
   url: string;
   videoTimestamp?: string | null;
-  media: number | Media;
+  media: Media;
   updatedAt: string;
   createdAt: string;
 }
@@ -91,7 +91,7 @@ export interface Food {
   description?: string | null;
   videoTimestamp?: string | null;
   ingredients?: (number | Ingredient)[] | null;
-  media: number | Media;
+  media: Media;
   updatedAt: string;
   createdAt: string;
 }

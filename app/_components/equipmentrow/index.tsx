@@ -1,14 +1,16 @@
 "useClient";
 
-import { Equipment, Food } from "@/app/_lib/db";
 import Link from "next/link";
+import { Equipment, Media } from "@/app/_lib/interface";
+import getApiURL from "@/app/_lib/getApiURL";
 
-export default function EquipmentRow({ equipment }: { equipment: Equipment }) {
+export default function EquipmentRow(equipment: Equipment) {
+  const media: Media = equipment.media;
   return (
     <div className="flex items-center">
       <img
         className="w-10 h-10 mr-4"
-        src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mba13-midnight-select-202402?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1708367688034"
+        src={`${getApiURL()}${media.url}`}
         alt="Laptop"
       />
       <span className="flex flex-grow">
@@ -16,8 +18,7 @@ export default function EquipmentRow({ equipment }: { equipment: Equipment }) {
         <span className="mx-1">| Generic</span>
       </span>
       <span className="text-gray-600">
-        {/* add url */}
-        <Link href={"https://amazon.com"} target="_blank">
+        <Link href={equipment.url} target="_blank">
           →
         </Link>
       </span>

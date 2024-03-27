@@ -1,9 +1,9 @@
-import getDomain from "@/app/_lib/getApiURL";
+import getDomain from "@/lib/getApiURL";
 import { Key } from "react";
-import VideoHeader from "@/app/_components/videoheader";
-import FoodRow from "@/app/_components/foodrow";
-import EquipmentRow from "@/app/_components/equipmentrow";
-import { Trip, Equipment, Food } from "@/app/_lib/interface";
+import VideoHeader from "@/components/videoheader";
+import FoodRow from "@/components/foodrow";
+import EquipmentRow from "@/components/equipmentrow";
+import { Trip, Equipment, Food } from "@/lib/interface";
 
 export default async function TripPage({ params }: { params: { id: string } }) {
   const res = await fetch(`${getDomain()}/api/trips/${params.id}`, {
@@ -26,17 +26,17 @@ export default async function TripPage({ params }: { params: { id: string } }) {
         buy the gear if you want to support us.
       </p>
       <VideoHeader {...trip} />
-      <div className="mb-8">
+      {/* <div className="mt-8">
         <h2 className="font-semibold mb-4">Food</h2>
         <div className="space-y-4">
           {foods.map((food: Food, key: Key) => (
             <FoodRow key={key} {...food}></FoodRow>
           ))}
         </div>
-      </div>
-      <div className="mb-8">
+      </div> */}
+      <div className="mt-8">
         <h2 className="font-semibold mb-4">Equipment</h2>
-        <div className="space-y-4">
+        <div className="space-y-4 flex flew-wrap">
           {equipments.map((equipment: Equipment, key: Key) => (
             <EquipmentRow key={key} {...equipment}></EquipmentRow>
           ))}

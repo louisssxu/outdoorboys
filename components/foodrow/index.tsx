@@ -1,7 +1,5 @@
-"use client";
-
-import getApiURL from "@/app/_lib/getApiURL";
-import { Food, Media } from "@/app/_lib/interface";
+import getApiURL from "@/lib/getApiURL";
+import { Food, Media } from "@/lib/interface";
 
 export default function FoodRow(food: Food) {
   const media: Media = food.media;

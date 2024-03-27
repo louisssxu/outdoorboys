@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import NavBar from "./_components/navbar";
+import NavBar from "../components/navbar";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { ThemeProvider } from "@/components/theme-provider";
 
 export const metadata: Metadata = {
   title: "Outdoorboys Gear",
@@ -20,8 +21,10 @@ export default function RootLayout({
       <Analytics />
       <SpeedInsights />
       <body>
-        <NavBar />
-        <div className=" container mx-auto px-4 h-max">{children}</div>
+        <ThemeProvider attribute="class" defaultTheme="light">
+          <NavBar />
+          <div className=" container mx-auto px-4 h-max">{children}</div>
+        </ThemeProvider>
       </body>
     </html>
   );

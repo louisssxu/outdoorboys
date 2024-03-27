@@ -1,7 +1,7 @@
 import { Key } from "react";
-import getApiURL from "@/app/_lib/getApiURL";
-import TripCard from "@/app/_components/tripbox";
-import { Trip } from "@/app/_lib/interface";
+import getApiURL from "@/lib/getApiURL";
+import TripCard from "@/components/tripcard";
+import { Trip } from "@/lib/interface";
 
 // const fetcher = (url: string) => fetch(url).then((res) => res.json());
 

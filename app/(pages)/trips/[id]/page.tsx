@@ -19,7 +19,7 @@ export default async function TripPage({ params }: { params: { id: string } }) {
   const foods: Food[] = trip.foods;
 
   return (
-    <>
+    <div className="container relative">
       <h1 className="text-3xl font-bold my-6">What Luke Packed This Trip</h1>
       <p className="mb-6">
         This is a list of gears we see Luke use this video. We provide a link to
@@ -42,6 +42,6 @@ export default async function TripPage({ params }: { params: { id: string } }) {
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 }

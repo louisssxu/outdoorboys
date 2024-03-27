@@ -1,7 +1,26 @@
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import Link from "next/link";
+
 export default async function Home() {
   return (
     <>
-      <div>Out door boys main page</div>
+      <div className="relative w-full flex flex-col items-center text-center">
+        <section className="w-full  bg-center bg-hero-pattern bg-cover  ">
+          <div className=" bg-gradient-to-t from-transparent from-20%  to-secondary py-80">
+            <h1 className=" text-5xl m-5 font-semibold text-primary-foreground">
+              Get toasty and cozy
+            </h1>
+            <p className=" m-5 text-primary-foreground text-xl">
+              {" "}
+              Discover all the equipments and tools Luke uses on his trips!{" "}
+            </p>
+            <Button>
+              <Link href={"/trips"}>Take a look</Link>
+            </Button>
+          </div>
+        </section>
+      </div>
     </>
   );
 }

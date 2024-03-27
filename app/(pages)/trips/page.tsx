@@ -18,13 +18,13 @@ export default async function TripsPage() {
   // const trips: Trip[] = data.data.docs;
   // console.log(trips);
   return (
-    <>
+    <div className="container">
       <h1 className="text-4xl font-bold m-2 mb-12">Lukes Trips</h1>
       <div className=" size-full flex flex-wrap -mx-4 ">
         {trips.map((trip: Trip, index: Key) => (
           <TripCard key={index} {...trip} />
         ))}
       </div>
-    </>
+    </div>
   );
 }

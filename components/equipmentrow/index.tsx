@@ -15,11 +15,6 @@ export default function EquipmentRow(equipment: Equipment) {
     >
       <div className="p-4 md:p-6">
         <div className="grid gap-4">
-          <div>
-            {getApiURL()}
-            {media.url}
-          </div>
-
           <Image
             src={`${getApiURL()}${media.url}`}
             alt="Cover"

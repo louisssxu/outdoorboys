@@ -26,7 +26,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "app/scripts/migrate.ts"
+    "app/scripts/migrate.ts",
+    "components/footer"
   ],
   "exclude": ["node_modules"]
 }

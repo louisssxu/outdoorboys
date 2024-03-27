@@ -10,7 +10,9 @@ export default function NavBar() {
     <header>
       <nav>
         <div className="flex flex-row items-center justify-between border-b-2">
-          <div className="mx-10 my-5">OutdoorBoys</div>
+          <div className="mx-10 my-5 text-2xl  font-semibold">
+            <Link href="/">OutdoorBoys Store</Link>
+          </div>
           <ul className="flex flex-row justify-evenly align-middle items-center">
             <li className="mr-10 hover:text-muted-foreground ">
               <Link href="/" className={pathname == "/" ? " text-primary" : ""}>

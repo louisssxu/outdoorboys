@@ -3,6 +3,7 @@ import { Equipment, Media } from "@/lib/interface";
 import getApiURL from "@/lib/getApiURL";
 import { Button } from "../ui/button";
 import { equiments } from "@/lib/schema";
+import Image from "next/image";
 
 export default function EquipmentRow(equipment: Equipment) {
   const media: Media = equipment.media;
@@ -13,13 +14,21 @@ export default function EquipmentRow(equipment: Equipment) {
     >
       <div className="p-4 md:p-6">
         <div className="grid gap-4">
-          <img
+          {/* <img
+            src={`${getApiURL()}${media.url}`}
+            alt="Cover"
+            width="400"
+            height="225"
+            className="aspect-video overflow-hidden rounded-lg object-cover"
+          /> */}
+          <Image
             src={`${getApiURL()}${media.url}`}
             alt="Cover"
             width="400"
             height="225"
             className="aspect-video overflow-hidden rounded-lg object-cover"
           />
+
           <h2 className="font-semibold text-xl sm:text-2xl">
             {equipment.name}
           </h2>

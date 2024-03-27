@@ -6,6 +6,14 @@ const nextConfig = {
         protocol: "https",
         hostname: "img.youtube.com",
       },
+      {
+        protocol: "http",
+        hostname: "localhost",
+      },
+      {
+        protocol: "https",
+        hostname: "odb-cms-production.up.railway.app",
+      },
     ],
   },
 };

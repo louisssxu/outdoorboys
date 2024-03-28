@@ -4,27 +4,18 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <div className="w-full flex flex-row justify-evenly flex-1 fixed bottom-0">
-      <Button variant={"ghost"}>
-        <Link href="https://youtube.com/outdoorboys" target="_blank">
-          Channel
-        </Link>
-      </Button>
-      <Button variant={"ghost"}>
-        <Link href="https://youtube.com/outdoorboys" target="_blank">
-          Channel
-        </Link>
-      </Button>
-      <Button variant={"ghost"}>
-        <Link href="https://youtube.com/outdoorboys" target="_blank">
-          Channel
-        </Link>
-      </Button>
-      <Button variant={"ghost"}>
-        <Link href="https://youtube.com/outdoorboys" target="_blank">
-          Channel
-        </Link>
-      </Button>
+    <div className="w-full flex flex-row justify-evenly flex-1 relative bottom-0 border-t-2 p-4">
+      <span>
+        {" "}
+        This website is not affiliated with the youtube channel{" "}
+        <Link
+          href="https://youtube.com/outdoorboys"
+          target="_blank"
+          className=" underline"
+        >
+          Outdoorboys
+        </Link>{" "}
+      </span>
     </div>
   );
 };

@@ -8,7 +8,7 @@ export default function TripCard(trip: Trip) {
   return (
     <div className="relative w-full  xs:w-full md:w-1/2 xl:w-1/4 px-4 mb-8">
       <Link href={`trips/${trip.id}`}>
-        <div className=" bg-secondary rounded shadow">
+        <div className=" bg-secondary rounded outline-4 hover:outline">
           <div className="relative h-56">
             <Image
               src={getImageUrl(trip.youtubeUrl)}

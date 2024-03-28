@@ -2,6 +2,7 @@ import Link from "next/link";
 import getImageUrl from "@/lib/getImageUrl";
 import { Trip } from "@/lib/interface";
 import { Button } from "../ui/button";
+import Image from "next/image";
 
 export default async function VideoHeader(trip: Trip) {
   const displayDate: string = trip.date.split("T")[0];
@@ -23,12 +24,13 @@ export default async function VideoHeader(trip: Trip) {
               </Link>
             </Button>
           </div>
-          <div className="md:w-1/3">
-            <img
-              className="w-full h-auto rounded my-2"
+          <div className=" relative md:w-1/3 aspect-video">
+            <Image
               src={getImageUrl(trip.youtubeUrl)}
-              alt="Youtube Thumbnail"
-            />
+              alt={trip.title}
+              fill
+              className="aspect-video overflow-hidden rounded-lg object-cover"
+            ></Image>
           </div>
         </div>
       </div>

@@ -4,7 +4,7 @@ import TripCard from "@/components/tripcard";
 import { Trip } from "@/lib/interface";
 
 export default async function TripsPage() {
-  const data = await fetch(`${getApiURL()}/api/trips`, {
+  const data = await fetch(`${getApiURL()}/api/trips?sort=-date`, {
     cache: "no-store",
   });
   const jsonData = await data.json();

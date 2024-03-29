@@ -15,11 +15,9 @@ export default async function Home() {
               {" "}
               Discover all the equipments and tools Luke uses on his trips!{" "}
             </p>
-            <Button>
-              <Link href={"/trips"} className="w-full">
-                Take a look
-              </Link>
-            </Button>
+            <Link href={"/trips"} className="">
+              <Button>Take a look</Button>
+            </Link>
           </div>
         </section>
       </div>

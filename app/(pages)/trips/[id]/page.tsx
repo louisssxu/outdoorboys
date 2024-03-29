@@ -11,8 +11,6 @@ export default async function TripPage({ params }: { params: { id: string } }) {
   });
   const jsonData = await res.json();
 
-  console.log(`${getDomain()}/api/trips/${params.id}`);
-
   const trip: Trip = jsonData;
   // const equipments: (number | Equipment)[] = trip.equipments;
   const equipments: Equipment[] = trip.equipments;

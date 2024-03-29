@@ -7,7 +7,7 @@ import { Trip, Equipment, Food } from "@/lib/interface";
 
 export default async function TripPage({ params }: { params: { id: string } }) {
   const res = await fetch(`${getDomain()}/api/trips/${params.id}`, {
-    cache: "no-store",
+    cache: process.env.NODE_ENV === "development" ? "no-cache" : "force-cache",
   });
   const jsonData = await res.json();
 

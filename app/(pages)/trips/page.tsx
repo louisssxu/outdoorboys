@@ -5,7 +5,7 @@ import { Trip } from "@/lib/interface";
 
 export default async function TripsPage() {
   const data = await fetch(`${getApiURL()}/api/trips?sort=-date`, {
-    cache: "no-store",
+    cache: process.env.NODE_ENV === "development" ? "no-cache" : "force-cache",
   });
   const jsonData = await data.json();
   const trips: Trip[] = jsonData.docs;

@@ -19,7 +19,7 @@ export default async function VideoHeader(trip: Trip) {
               {trip.location}
             </span>
             <Button>
-              <Link href={trip.youtubeUrl} target="_blank">
+              <Link href={trip.youtubeUrl} target="_blank" className="w-full">
                 Watch Now
               </Link>
             </Button>

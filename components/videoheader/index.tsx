@@ -18,11 +18,9 @@ export default async function VideoHeader(trip: Trip) {
             <span className="block mb-2 text-muted-foreground">
               {trip.location}
             </span>
-            <Button>
-              <Link href={trip.youtubeUrl} target="_blank" className="w-full">
-                Watch Now
-              </Link>
-            </Button>
+            <Link href={trip.youtubeUrl} target="_blank">
+              <Button>Watch Now</Button>
+            </Link>
           </div>
           <div className=" relative md:w-1/3 aspect-video">
             <Image

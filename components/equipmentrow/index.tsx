@@ -28,15 +28,11 @@ export default function EquipmentRow(equipment: Equipment) {
           </h2>
         </div>
         <div className="mt-4 grid gap-2">
-          <Button variant="secondary">
-            <Link
-              href={`https://${equipment.url}`}
-              target="_blank"
-              className="w-full"
-            >
+          <Link href={`https://${equipment.url}`} target="_blank">
+            <Button className="w-full" variant="secondary">
               Visit Store
-            </Link>
-          </Button>
+            </Button>
+          </Link>
         </div>
       </div>
     </div>

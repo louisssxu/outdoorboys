@@ -42,14 +42,16 @@ export interface User {
  */
 export interface Trip {
   id: number;
-  title: string;
-  location: string;
-  date: string;
-  youtubeUrl: string;
-  equipments: Equipment[];
-  foods: Food[];
-  updatedAt: string;
-  createdAt: string;
+  attributes: {
+    title: string;
+    location: string;
+    date: string;
+    url: string;
+    updatedAt: string;
+    createdAt: string;
+    publishedAt: string;
+    equipment?: { data: Equipment[] } | null;
+  };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -57,13 +59,15 @@ export interface Trip {
  */
 export interface Equipment {
   id: number;
-  name: string;
-  description?: string | null;
-  url: string;
-  videoTimestamp?: string | null;
-  media: Media;
-  updatedAt: string;
-  createdAt: string;
+  attributes: {
+    name: string;
+    url: string;
+    timestamp: string;
+    media: { data: Media };
+    publishedAt: string;
+    updatedAt: string;
+    createdAt: string;
+  };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -71,16 +75,14 @@ export interface Equipment {
  */
 export interface Media {
   id: number;
-  alt: string;
-  updatedAt: string;
-  createdAt: string;
-  url?: string | null;
-  filename?: string | null;
-  mimeType?: string | null;
-  filesize?: number | null;
-  width?: number | null;
-  height?: number | null;
+  attributes: {
+    name: string;
+    url: string;
+    createdAt: string;
+    updatedAt: string;
+  };
 }
+
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "foods".

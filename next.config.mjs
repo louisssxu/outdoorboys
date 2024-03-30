@@ -12,7 +12,7 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "odb-cms-production.up.railway.app",
+        hostname: "res.cloudinary.com",
       },
     ],
   },

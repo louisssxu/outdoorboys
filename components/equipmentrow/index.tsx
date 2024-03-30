@@ -6,7 +6,9 @@ import { equiments } from "@/lib/schema";
 import Image from "next/image";
 
 export default function EquipmentRow(equipment: Equipment) {
-  const media: Media = equipment.media;
+  const attributes = equipment.attributes;
+
+  const media: Media = attributes.media.data;
 
   return (
     <div
@@ -16,7 +18,7 @@ export default function EquipmentRow(equipment: Equipment) {
       <div className="p-4 md:p-6">
         <div className="grid gap-4">
           <Image
-            src={`${getApiURL()}${media.url}`}
+            src={media.attributes.url}
             alt="Cover"
             width="400"
             height="225"
@@ -24,11 +26,11 @@ export default function EquipmentRow(equipment: Equipment) {
           />
 
           <h2 className="font-semibold text-xl sm:text-2xl">
-            {equipment.name}
+            {attributes.name}
           </h2>
         </div>
         <div className="mt-4 grid gap-2">
-          <Link href={`https://${equipment.url}`} target="_blank">
+          <Link href={`https://${attributes.url}`} target="_blank">
             <Button className="w-full" variant="secondary">
               Visit Store
             </Button>

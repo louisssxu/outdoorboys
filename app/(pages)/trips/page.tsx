@@ -2,13 +2,12 @@ import { Key } from "react";
 import getApiURL from "@/lib/getApiURL";
 import TripCard from "@/components/tripcard";
 import { Trip } from "@/lib/interface";
+import { fetcher } from "@/lib/fetcher";
 
 export default async function TripsPage() {
-  const data = await fetch(`${getApiURL()}/api/trips?sort=-date`, {
-    cache: process.env.NODE_ENV === "development" ? "no-cache" : "force-cache",
-  });
-  const jsonData = await data.json();
-  const trips: Trip[] = jsonData.docs;
+  const data = await fetcher(`${getApiURL()}/api/trips?sort=date:desc`);
+
+  const trips: Trip[] = data.data;
 
   return (
     <div className="container min-h-screen">

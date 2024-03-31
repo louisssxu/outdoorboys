@@ -31,6 +31,7 @@ export interface Equipment {
   attributes: {
     name: string;
     url: string;
+    alturl: string;
     media: { data: Media };
     publishedAt: string;
     updatedAt: string;

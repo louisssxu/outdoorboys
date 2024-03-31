@@ -62,7 +62,6 @@ export interface Equipment {
   attributes: {
     name: string;
     url: string;
-    timestamp: string;
     media: { data: Media };
     publishedAt: string;
     updatedAt: string;

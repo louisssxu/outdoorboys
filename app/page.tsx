@@ -9,7 +9,7 @@ import { Key } from "react";
 
 export default async function Home() {
   const data = await fetcher(`${getApiURL()}/api/equipments?populate=*`);
-  const featuredEquipments: Equipment[] = data.data.slice(0, 3);
+  const featuredEquipments: Equipment[] = data?.data.slice(0, 3);
 
   return (
     <>
@@ -33,9 +33,13 @@ export default async function Home() {
         <section className=" max-w-screen-2xl w-full py-8 ">
           <h1 className=" text-4xl m-5 font-semibold ">Featured Gear</h1>
           <div className="space-y-4 flex flew-wrap">
-            {featuredEquipments.map((equipment: Equipment, key: Key) => (
-              <EquipmentRow key={key} {...equipment}></EquipmentRow>
-            ))}
+            {data ? (
+              featuredEquipments.map((equipment: Equipment, key: Key) => (
+                <EquipmentRow key={key} {...equipment}></EquipmentRow>
+              ))
+            ) : (
+              <p>Loading...</p>
+            )}
           </div>
         </section>
       </div>

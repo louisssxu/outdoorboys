@@ -2,7 +2,6 @@ import Link from "next/link";
 import { Equipment, Media } from "@/lib/interface";
 import getApiURL from "@/lib/getApiURL";
 import { Button } from "../ui/button";
-import { equiments } from "@/lib/schema";
 import Image from "next/image";
 
 export default function EquipmentRow(equipment: Equipment) {

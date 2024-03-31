@@ -1,9 +1,8 @@
 import getDomain from "@/lib/getApiURL";
 import { Key } from "react";
 import VideoHeader from "@/components/videoheader";
-import FoodRow from "@/components/foodrow";
 import EquipmentRow from "@/components/equipmentrow";
-import { Trip, Equipment, Food } from "@/lib/interface";
+import { Trip, Equipment } from "@/lib/interface";
 import { fetcher } from "@/lib/fetcher";
 import { date } from "drizzle-orm/mysql-core";
 
@@ -16,12 +15,12 @@ export default async function TripPage({ params }: { params: { id: string } }) {
   const data = await fetcher(
     `${getDomain()}/api/trips/${
       params.id
-    }?populate[equipment][populate][0]=media`
+    }?populate[equipments][populate][0]=media`
   );
 
   const trip: Trip = data.data;
 
-  const equipments: Equipment[] = trip.attributes.equipment?.data || [];
+  const equipments: Equipment[] = trip.attributes.equipments?.data || [];
 
   return (
     <div className="container relative">

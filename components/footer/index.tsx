@@ -13,7 +13,7 @@ const Footer = () => {
           target="_blank"
           className=" underline"
         >
-          Outdoorboys
+          Outdoor Boys
         </Link>{" "}
       </span>
     </div>

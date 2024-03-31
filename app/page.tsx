@@ -1,13 +1,22 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
+import { fetcher } from "@/lib/fetcher";
+import getApiURL from "@/lib/getApiURL";
+import { Equipment } from "@/lib/interface";
+import EquipmentRow from "@/components/equipmentrow";
+import { Key } from "react";
 
 export default async function Home() {
+  const data = await fetcher(`${getApiURL()}/api/equipments?populate=*`);
+  const featuredEquipments: Equipment[] = data.data.slice(0, 3);
+  console.log(featuredEquipments);
+
   return (
     <>
-      <div className="relative w-full flex flex-col items-center text-center min-h-screen">
-        <section className=" max-w-screen-2xl w-full  ">
-          <div className=" bg-center bg-hero-pattern bg-cover">
+      <div className="relative w-full flex flex-col items-center  min-h-screen mb-2">
+        <section className=" max-w-screen-2xl w-full text-center ">
+          <div className=" bg-center bg-hero-pattern bg-cover rounded-b-2xl">
             <div className=" bg-gradient-to-t from-transparent from-20%  to-secondary py-80">
               <h1 className=" text-5xl m-5 font-semibold text-primary-foreground">
                 Get cozy and toasty
@@ -20,6 +29,14 @@ export default async function Home() {
                 <Button>Take a look</Button>
               </Link>
             </div>
+          </div>
+        </section>
+        <section className=" max-w-screen-2xl w-full py-8 ">
+          <h1 className=" text-4xl m-5 font-semibold ">Featured Gear</h1>
+          <div className="space-y-4 flex flew-wrap">
+            {featuredEquipments.map((equipment: Equipment, key: Key) => (
+              <EquipmentRow key={key} {...equipment}></EquipmentRow>
+            ))}
           </div>
         </section>
       </div>

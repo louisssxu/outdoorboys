@@ -10,7 +10,6 @@ import { Key } from "react";
 export default async function Home() {
   const data = await fetcher(`${getApiURL()}/api/equipments?populate=*`);
   const featuredEquipments: Equipment[] = data.data.slice(0, 3);
-  console.log(featuredEquipments);
 
   return (
     <>

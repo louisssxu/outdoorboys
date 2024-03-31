@@ -25,15 +25,17 @@ export default async function TripPage({ params }: { params: { id: string } }) {
 
   return (
     <div className="container relative">
-      <h1 className="text-3xl font-bold my-6">What Luke Packed This Trip</h1>
-      <p className="mb-6">
+      <h1 className="text-4xl font-bold mx-8 my-12">
+        What Luke Packed This Trip
+      </h1>
+      <p className="mb-6 text-muted-foreground">
         This is a list of gears we see Luke use this video. We provide a link to
         buy the gear if you want to support us.
       </p>
       <VideoHeader {...trip} />
 
       <div className="mt-8">
-        <h2 className="font-semibold mb-4">Equipment</h2>
+        <h2 className="font-semibold mb-4 text-xl ">Equipments</h2>
         <div className="space-y-4 flex flew-wrap">
           {equipments.map((equipment: Equipment, key: Key) => (
             <EquipmentRow key={key} {...equipment}></EquipmentRow>

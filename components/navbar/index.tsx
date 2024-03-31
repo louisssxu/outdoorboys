@@ -7,10 +7,10 @@ export default function NavBar() {
   const pathname = usePathname();
 
   return (
-    <header>
-      <nav>
-        <div className="flex flex-row items-center justify-between border-b-2">
-          <div className="mx-10 my-5 text-2xl  font-semibold">
+    <header className="border-b-2">
+      <nav className=" max-w-screen-2xl mx-auto">
+        <div className="flex flex-row items-center justify-between ">
+          <div className="mx-10 my-5 text-2xl font-semibold">
             <Link href="/">OutdoorBoys Store</Link>
           </div>
           <ul className="flex flex-row justify-evenly align-middle items-center">

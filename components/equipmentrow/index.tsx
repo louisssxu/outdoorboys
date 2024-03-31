@@ -16,7 +16,7 @@ export default function EquipmentRow(equipment: Equipment) {
       data-v0-t="card"
     >
       <div className="p-4 md:p-6">
-        <div className="grid gap-4">
+        <div className="flex flex-col gap-4 items-center">
           <Image
             src={media.attributes.url}
             alt="Cover"
@@ -24,11 +24,11 @@ export default function EquipmentRow(equipment: Equipment) {
             height="225"
             className="aspect-video overflow-hidden rounded-lg object-cover"
           />
-
-          <h2 className="font-semibold text-xl sm:text-2xl">
-            {attributes.name}
-          </h2>
         </div>
+
+        <h2 className=" m-3 font-semibold  lg:text-2xl text-lg">
+          {attributes.name}
+        </h2>
         <div className="mt-4 grid gap-2">
           <Link href={`https://${attributes.url}`} target="_blank">
             <Button className="w-full" variant="secondary">

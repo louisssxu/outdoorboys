@@ -10,6 +10,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
+  SheetClose,
 } from "@/components/ui/sheet";
 import path from "path";
 
@@ -50,28 +51,26 @@ export default function NavBar() {
               <SheetContent>
                 <SheetHeader>
                   <SheetTitle>Outdoorboys Store</SheetTitle>
-                  <SheetDescription>
-                    <ul className=" flex-col justify-evenly align-middle items-center">
-                      {paths.map((path, index) => (
-                        <li
-                          key={index}
-                          className="mt-10 text-foreground hover:text-muted-foreground"
+                  <ul className=" flex-col justify-evenly align-middle items-center">
+                    {paths.map((path, index) => (
+                      <li
+                        key={index}
+                        className="mt-10 text-foreground hover:text-muted-foreground"
+                      >
+                        <Link
+                          href={path.path}
+                          className={
+                            pathname == path.path ? " text-primary" : ""
+                          }
                         >
-                          <Link
-                            href={path.path}
-                            className={
-                              pathname == path.path ? " text-primary" : ""
-                            }
-                          >
-                            {path.name}
-                          </Link>
-                        </li>
-                      ))}
-                      <li className="mt-10">
-                        <ModeToggle />
+                          <SheetClose>{path.name}</SheetClose>
+                        </Link>
                       </li>
-                    </ul>
-                  </SheetDescription>
+                    ))}
+                    <li className="mt-10">
+                      <ModeToggle />
+                    </li>
+                  </ul>
                 </SheetHeader>
               </SheetContent>
             </Sheet>

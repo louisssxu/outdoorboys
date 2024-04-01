@@ -29,20 +29,12 @@ export default function EquipmentRow(equipment: Equipment) {
           {attributes.name}
         </h2>
         <div className="mt-4 gap-2 flex flex-row">
-          <Link
-            href={`https://${attributes.url}`}
-            target="_blank"
-            className="w-1/2"
-          >
+          <Link href={attributes.url} target="_blank" className="w-1/2">
             <Button variant="default" className="w-full">
               Visit Store
             </Button>
           </Link>
-          <Link
-            href={`https://${attributes.alturl}`}
-            target="_blank"
-            className="w-1/2"
-          >
+          <Link href={attributes.alturl} target="_blank" className="w-1/2">
             <Button variant="secondary" className="w-full">
               View Similar
             </Button>

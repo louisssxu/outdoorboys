@@ -55,7 +55,7 @@ export default function NavBar() {
                       {paths.map((path, index) => (
                         <li
                           key={index}
-                          className="mt-10 text-primary-foreground hover:text-muted-foreground"
+                          className="mt-10 text-foreground hover:text-muted-foreground"
                         >
                           <Link
                             href={path.path}

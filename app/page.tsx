@@ -32,7 +32,7 @@ export default async function Home() {
         </section>
         <section className=" max-w-screen-2xl w-full py-8 ">
           <h1 className=" text-4xl m-5 font-semibold ">Featured Gear</h1>
-          <div className="space-y-4 flex flew-wrap">
+          <div className="size-full flex flex-col flex-wrap w-full sm:flex-row">
             {data ? (
               featuredEquipments.map((equipment: Equipment, key: Key) => (
                 <EquipmentRow key={key} {...equipment}></EquipmentRow>

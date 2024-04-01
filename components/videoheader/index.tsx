@@ -22,7 +22,7 @@ export default async function VideoHeader(trip: Trip) {
               <Button>Watch Now</Button>
             </Link>
           </div>
-          <div className=" relative md:w-1/3 aspect-video">
+          <div className=" relative md:w-1/3 aspect-video my-2">
             <Image
               src={getImageUrl(attributes.url)}
               alt={attributes.title}

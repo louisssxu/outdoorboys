@@ -18,15 +18,6 @@ export default function Error({
   return (
     <div className="container flex flex-col items-center">
       <h2 className="font-semibold text-4xl m-7">Something went wrong!</h2>
-      <Button
-        className="m-2"
-        onClick={
-          // Attempt to recover by trying to re-render the segment
-          () => reset()
-        }
-      >
-        Try again
-      </Button>
     </div>
   );
 }

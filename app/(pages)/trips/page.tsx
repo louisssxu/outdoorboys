@@ -12,7 +12,7 @@ export default async function TripsPage() {
   return (
     <div className="container min-h-screen">
       <h1 className="text-4xl font-bold mx-8 my-12">Lukes Trips</h1>
-      <div className=" size-full flex flex-wrap -mx-4 ">
+      <div className=" size-full flex flex-wrap flex-row  ">
         {trips.map((trip: Trip, index: Key) => (
           <TripCard key={index} {...trip} />
         ))}

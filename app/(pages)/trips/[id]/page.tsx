@@ -29,7 +29,7 @@ export default async function TripPage({ params }: { params: { id: string } }) {
 
       <div className="mt-8">
         <h2 className="font-semibold mb-4 text-xl ">Equipments</h2>
-        <div className="space-y-4 flex flew-wrap">
+        <div className="size-full flex flex-col flex-wrap w-full sm:flex-row ">
           {equipments.map((equipment: Equipment, key: Key) => (
             <EquipmentRow key={key} {...equipment}></EquipmentRow>
           ))}

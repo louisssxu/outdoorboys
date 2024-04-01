@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function TripCard(trip: Trip) {
   const attributes = trip.attributes;
   return (
-    <div className="relative w-full  xs:w-full md:w-1/2 xl:w-1/4 px-4 mb-8">
+    <div className="relative  w-full md:w-1/2 xl:w-1/3 px-4 mb-8">
       <Link href={`trips/${trip.id}`}>
         <div className=" bg-secondary rounded outline-4 hover:outline">
           <div className="relative h-56">

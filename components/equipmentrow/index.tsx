@@ -10,11 +10,8 @@ export default function EquipmentRow(equipment: Equipment) {
   const media: Media = attributes.media.data;
 
   return (
-    <div
-      className="rounded-lg border bg-card text-card-foreground shadow-sm m-4 md:w-1/3 sm: w-full"
-      data-v0-t="card"
-    >
-      <div className="p-4 md:p-6">
+    <div className="relative lg:w-1/3 md:w-1/2 sm: w-full p-2" data-v0-t="card">
+      <div className="p-4 md:p-6  rounded-lg border bg-card text-card-foreground shadow-sm">
         <div className="flex flex-col gap-4 items-center">
           <Image
             src={media.attributes.url}

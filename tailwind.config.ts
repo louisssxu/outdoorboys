@@ -19,7 +19,8 @@ const config = {
     },
     extend: {
       backgroundImage: {
-        "hero-pattern": "url('/grass-camp.png')",
+        "hero-pattern":
+          "url(https://res.cloudinary.com/doqxbr7bd/image/upload/v1712014231/Camping_Gear_2020_Getty_Images_sb10070057l_001_29073e6fb0.png)",
       },
       colors: {
         border: "hsl(var(--border))",

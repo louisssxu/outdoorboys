@@ -4,22 +4,16 @@ import VideoHeader from "@/components/videoheader";
 import EquipmentRow from "@/components/equipmentrow";
 import { Trip, Equipment } from "@/lib/interface";
 import { fetcher } from "@/lib/fetcher";
-import { date } from "drizzle-orm/mysql-core";
+
+// for faster routing fetch trip -> equipments -> media from /trips page and pass it as props
 
 export default async function TripPage({ params }: { params: { id: string } }) {
-  // const res = await fetch(`${getDomain()}/api/trips/${params.id}`, {
-  //   next: { revalidate: 3600 },
-  // });
-  // const jsonData = await res.json();
-
   const data = await fetcher(
     `${getDomain()}/api/trips/${
       params.id
     }?populate[equipments][populate][0]=media`
   );
-
   const trip: Trip = data.data;
-
   const equipments: Equipment[] = trip.attributes.equipments?.data || [];
 
   return (

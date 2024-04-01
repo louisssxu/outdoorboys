@@ -46,5 +46,3 @@ export default async function Home() {
     </>
   );
 }
-
-export const runtime = "edge";
